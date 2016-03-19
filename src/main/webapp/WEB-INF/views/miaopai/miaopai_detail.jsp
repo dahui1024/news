@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <meta name="description" content="${detail.title }">
-    <meta name="keywords" content="${detail.title }">
+    <meta name="description" content="门牙视频  - ${title }">
+    <meta name="keywords" content="${title },门牙视频">
     <link rel="icon" href="/static/favicon.ico">
-    <title>${detail.title } | 互联网's 引力波</title>
+    <title>[门牙视频  ${length }]${title }</title>
 
     <!-- Bootstrap core CSS -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
@@ -33,8 +33,8 @@
 
     <div class="container">
       <div class="blog-header">
-        <h1 class="blog-title">${detail.title }</h1>
-        <p class="lead blog-description">门牙故事</p>
+        <h1 class="blog-title">${title }<small>${length }</small></h1>
+        <p class="lead blog-description">门牙视频！</p>
       </div>
       <div class="row">
       	<div class="bdsharebuttonbox col-md-12"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a></div>
@@ -43,8 +43,10 @@
       <div class="row">
         <div class="col-sm-12 blog-main">
 		  	<div class="blog-post">
-		  		<%-- <h2 class="blog-post-title">${detail.title }</h2> --%>
-		  		${detail.body }
+		  		<%-- <h2 class="blog-post-title">${title }<small>${length }</small></h2> --%>
+		  		<div class="embed-responsive embed-responsive-16by9">
+				  <video controls="" autoplay="true" name="media"><source src="${video_url }" type="video/mp4"></video>
+				</div>
 		  	</div>
         </div><!-- /.blog-main -->
       </div><!-- /.row -->
@@ -52,11 +54,5 @@
 
     <c:import url="../footer.jsp"/>
     
-    <script type="text/javascript"> 
-     /*插屏*/ 
-     var cpro_id = "u2565571";
-	</script>
-	<script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>
-	
   </body>
 </html>

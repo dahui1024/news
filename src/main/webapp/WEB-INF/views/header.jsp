@@ -4,7 +4,8 @@
   <div class="container">
     <nav class="blog-nav">
       <a class="blog-nav-item" href="/">首页</a>
-      <a class="blog-nav-item" href="/zhihu">每日故事</a>
+      <a class="blog-nav-item" href="/zhihu">门牙故事</a>
+      <a class="blog-nav-item" href="/miaopai">门牙视频</a>
     </nav>
   </div>
 </div>
