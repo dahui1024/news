@@ -10,7 +10,7 @@
     <meta name="description" content="${detail.title }">
     <meta name="keywords" content="${detail.dkeys }">
     <link rel="icon" href="/static/favicon.ico">
-    <title>互联网's 引力波</title>
+    <title>${detail.title } | 互联网's 引力波</title>
 
     <!-- Bootstrap core CSS -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
@@ -38,6 +38,10 @@
         <p class="lead blog-description">关注互联网，关注生活！</p>
       </div>
       <div class="row">
+      	<div class="bdsharebuttonbox col-md-12"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a></div>
+		<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"${detail.title }","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      </div>
+      <div class="row">
         <div class="col-sm-12 blog-main">
 		  	<div class="blog-post">
 		  		<h2 class="blog-post-title">${detail.title }</h2>
@@ -48,35 +52,13 @@
       </div><!-- /.row -->
     </div><!-- /.container -->
 
-    <footer class="blog-footer">
-      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-      <p>
-        <a href="#">返回顶部</a>
-      </p>
-    </footer>
-    <script type="text/javascript">
-	    /*内文*/
-	var cpro_id = "u2559116";
+	<c:import url="../footer.jsp"/>
+   
+    <script type="text/javascript"> 
+     /*插屏*/ 
+     var cpro_id = "u2565571";
 	</script>
-	<script src="http://cpro.baidustatic.com/cpro/ui/cnw.js" type="text/javascript"></script>
-    
-	<script>
-		var _hmt = _hmt || [];
-		(function() {
-		  var hm = document.createElement("script");
-		  hm.src = "//hm.baidu.com/hm.js?fc307d17fff81696c599460fb7502605";
-		  var s = document.getElementsByTagName("script")[0]; 
-		  s.parentNode.insertBefore(hm, s);
-		})();
-	</script>
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="${ctx }/static/assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>
+   
   </body>
 </html>

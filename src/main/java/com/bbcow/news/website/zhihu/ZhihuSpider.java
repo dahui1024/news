@@ -7,6 +7,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import com.bbcow.news.website.BasicSpider;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.squareup.okhttp.OkHttpClient;
@@ -56,16 +62,18 @@ public class ZhihuSpider {
 			ObjectMapper objectMapper = new ObjectMapper();
 			JsonNode node = objectMapper.readTree(new String(bs,"utf-8"));
 			detail.put("title", node.get("title").asText());
-			String content = node.get("body").asText();
-			int sindex = content.indexOf("<div class=\"content\">");
-			int eindex = content.indexOf("<div class=\"view-more\">");
-			if(eindex>sindex){
-				content = content.substring(content.indexOf("<div class=\"content\">"),content.indexOf("<div class=\"view-more\">")-9);
-			}else{
-				content = content.substring(content.indexOf("<div class=\"content\">"));
-			}
-			detail.put("body", content);
+			String sourceContent = node.get("body").asText();
 			
+			Document doc = Jsoup.parse(sourceContent);
+			Document cleanBody = BasicSpider.denoiseForDoc(doc);
+			cleanBody = BasicSpider.removeImg(cleanBody);
+			Elements contents = cleanBody.getElementsByClass("content");
+			
+			if(contents.size()>0){
+				Element content = contents.get(0);
+				detail.put("body", content.html());
+				
+			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -75,6 +83,6 @@ public class ZhihuSpider {
 	
 	public static void main(String[] args) {
 		ZhihuSpider zs = new ZhihuSpider();
-		zs.detail("8015398");
+		zs.detail("7992629");
 	}
 }

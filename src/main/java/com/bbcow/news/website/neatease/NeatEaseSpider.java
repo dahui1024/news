@@ -18,7 +18,7 @@ import com.squareup.okhttp.ResponseBody;
 public class NeatEaseSpider {
 	private String url = "http://c.3g.163.com/nc/article/list/T1429173762551/0-20.html";
 	private String detail_url = "http://c.m.163.com/nc/article/detail_id/full.html";
-	private String photo_url = "http://c.m.163.com/photo/api/set/0096/photo_id.json";
+	private String photo_url = "http://c.m.163.com/photo/api/set/$1/$2.json";
 	private final Gson gson = new Gson();
 	
 	public NeatEaseVo[] top20() {
@@ -37,7 +37,10 @@ public class NeatEaseSpider {
 	}
 	public List<String[]> photo(String id,String[] content) {
 		OkHttpClient client = new OkHttpClient();
-		Request request = new Request.Builder().url(photo_url.replace("photo_id", id.substring(id.lastIndexOf("|")+1))).build();
+		photo_url = photo_url.replace("$1", id.substring(4,id.lastIndexOf("|")));
+		photo_url = photo_url.replace("$2", id.substring(id.lastIndexOf("|")+1));
+		
+		Request request = new Request.Builder().url(photo_url).build();
 		List<String[]> detail = new LinkedList<String[]>();
 		try {
 			Response response = client.newCall(request).execute();
